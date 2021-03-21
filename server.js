@@ -31,5 +31,5 @@ mongoose
 
 // listening on port
 app.listen(port, () => {
-  console.log(`listening on ${port}`);
+  console.log(`server running at http://localhost:${port}`);
 });
