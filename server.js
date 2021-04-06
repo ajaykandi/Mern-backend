@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config.js";
 import Userrouter from "./Routes/User.js";
+import verify from "./auth.js";
 
 const app = express();
 const port = process.env.port || 3000;
@@ -11,7 +12,7 @@ const port = process.env.port || 3000;
 
 app.use(express.json());
 app.use(cors());
-app.use("/users", Userrouter); //to access all user routs from >>> models/User.js
+app.use("/user", Userrouter); //to access all user routs from >>> models/User.js
 
 // api routes
 app.get("/", (req, res) => {
@@ -20,7 +21,7 @@ app.get("/", (req, res) => {
 
 // db Connection
 mongoose
-  .connect(process.env.DB_CONNECT, {
+  .connect(process.env.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
